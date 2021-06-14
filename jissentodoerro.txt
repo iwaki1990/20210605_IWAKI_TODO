@@ -1,0 +1,151 @@
+Microsoft Windows [Version 10.0.19041.1052]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32>cd C:\xampp\htdocs\todo_app
+
+C:\xampp\htdocs\todo_app>php artisan make:controller TaskController
+Controller already exists!
+
+C:\xampp\htdocs\todo_app>php artisan make:migration create_folders_table --create=folders
+Created Migration: 2021_06_14_115007_create_folders_table
+
+C:\xampp\htdocs\todo_app>php artisan migrate
+
+   Illuminate\Database\QueryException
+
+  SQLSTATE[HY000] [1049] Unknown database 'todo_app' (SQL: select * from information_schema.tables where table_schema = todo_app and table_name = migrations and table_type = 'BASE TABLE')
+
+  at C:\xampp\htdocs\todo_app\vendor\laravel\framework\src\Illuminate\Database\Connection.php:692
+    688▕         // If an exception occurs when attempting to run a query, we'll format the error
+    689▕         // message to include the bindings with SQL, which will make this exception a
+    690▕         // lot more helpful to the developer instead of just the database's errors.
+    691▕         catch (Exception $e) {
+  ➜ 692▕             throw new QueryException(
+    693▕                 $query, $this->prepareBindings($bindings), $e
+    694▕             );
+    695▕         }
+    696▕
+
+  1   C:\xampp\htdocs\todo_app\vendor\laravel\framework\src\Illuminate\Database\Connectors\Connector.php:70
+      PDOException::("SQLSTATE[HY000] [1049] Unknown database 'todo_app'")
+
+  2   C:\xampp\htdocs\todo_app\vendor\laravel\framework\src\Illuminate\Database\Connectors\Connector.php:70
+      PDO::__construct("mysql:host=127.0.0.1;port=3306;dbname=todo_app", "root", "", [])
+
+C:\xampp\htdocs\todo_app>php artisan make:model Models/Folder
+Model created successfully.
+
+C:\xampp\htdocs\todo_app>php artisan make:seeder FoldersTableSeeder
+Seeder created successfully.
+
+C:\xampp\htdocs\todo_app>composer dump-autoload
+Generating optimized autoload files
+> Illuminate\Foundation\ComposerScripts::postAutoloadDump
+> @php artisan package:discover --ansi
+Discovered Package: barryvdh/laravel-debugbar
+Discovered Package: facade/ignition
+Discovered Package: fideloper/proxy
+Discovered Package: fruitcake/laravel-cors
+Discovered Package: laravel/sail
+Discovered Package: laravel/tinker
+Discovered Package: nesbot/carbon
+Discovered Package: nunomaduro/collision
+Package manifest generated successfully.
+Generated optimized autoload files containing 4851 classes
+
+C:\xampp\htdocs\todo_app>php artisan db:seed --class=FoldersTableSeeder
+
+   Illuminate\Contracts\Container\BindingResolutionException
+
+  Target class [Database\Seeders\FoldersTableSeeder] does not exist.
+
+  at C:\xampp\htdocs\todo_app\vendor\laravel\framework\src\Illuminate\Container\Container.php:838
+    834▕
+    835▕         try {
+    836▕             $reflector = new ReflectionClass($concrete);
+    837▕         } catch (ReflectionException $e) {
+  ➜ 838▕             throw new BindingResolutionException("Target class [$concrete] does not exist.", 0, $e);
+    839▕         }
+    840▕
+    841▕         // If the type is not instantiable, the developer is attempting to resolve
+    842▕         // an abstract type such as an Interface or Abstract Class and there is
+
+  1   C:\xampp\htdocs\todo_app\vendor\laravel\framework\src\Illuminate\Container\Container.php:836
+      ReflectionException::("Class "Database\Seeders\FoldersTableSeeder" does not exist")
+
+  2   C:\xampp\htdocs\todo_app\vendor\laravel\framework\src\Illuminate\Container\Container.php:836
+      ReflectionClass::__construct("Database\Seeders\FoldersTableSeeder")
+
+C:\xampp\htdocs\todo_app>mkdir resources/views/tasks
+コマンドの構文が誤っています。
+
+C:\xampp\htdocs\todo_app>md resources/views/tasks
+コマンドの構文が誤っています。
+
+C:\xampp\htdocs\todo_app>php artisan make:migration create_tasks_table --create=tasks
+Created Migration: 2021_06_14_115930_create_tasks_table
+
+C:\xampp\htdocs\todo_app>php artisan migrate
+
+   Illuminate\Database\QueryException
+
+  SQLSTATE[HY000] [1049] Unknown database 'todo_app' (SQL: select * from information_schema.tables where table_schema = todo_app and table_name = migrations and table_type = 'BASE TABLE')
+
+  at C:\xampp\htdocs\todo_app\vendor\laravel\framework\src\Illuminate\Database\Connection.php:692
+    688▕         // If an exception occurs when attempting to run a query, we'll format the error
+    689▕         // message to include the bindings with SQL, which will make this exception a
+    690▕         // lot more helpful to the developer instead of just the database's errors.
+    691▕         catch (Exception $e) {
+  ➜ 692▕             throw new QueryException(
+    693▕                 $query, $this->prepareBindings($bindings), $e
+    694▕             );
+    695▕         }
+    696▕
+
+  1   C:\xampp\htdocs\todo_app\vendor\laravel\framework\src\Illuminate\Database\Connectors\Connector.php:70
+      PDOException::("SQLSTATE[HY000] [1049] Unknown database 'todo_app'")
+
+  2   C:\xampp\htdocs\todo_app\vendor\laravel\framework\src\Illuminate\Database\Connectors\Connector.php:70
+      PDO::__construct("mysql:host=127.0.0.1;port=3306;dbname=todo_app", "root", "", [])
+
+C:\xampp\htdocs\todo_app>php artisan make:model Models/Task
+Model created successfully.
+
+C:\xampp\htdocs\todo_app>php artisan make:seeder TasksTableSeeder
+Seeder created successfully.
+
+C:\xampp\htdocs\todo_app>
+C:\xampp\htdocs\todo_app>php artisan db:seed --class=TasksTableSeeder
+
+   Illuminate\Contracts\Container\BindingResolutionException
+
+  Target class [Database\Seeders\TasksTableSeeder] does not exist.
+
+  at C:\xampp\htdocs\todo_app\vendor\laravel\framework\src\Illuminate\Container\Container.php:838
+    834▕
+    835▕         try {
+    836▕             $reflector = new ReflectionClass($concrete);
+    837▕         } catch (ReflectionException $e) {
+  ➜ 838▕             throw new BindingResolutionException("Target class [$concrete] does not exist.", 0, $e);
+    839▕         }
+    840▕
+    841▕         // If the type is not instantiable, the developer is attempting to resolve
+    842▕         // an abstract type such as an Interface or Abstract Class and there is
+
+  1   C:\xampp\htdocs\todo_app\vendor\laravel\framework\src\Illuminate\Container\Container.php:836
+      ReflectionException::("Class "Database\Seeders\TasksTableSeeder" does not exist")
+
+  2   C:\xampp\htdocs\todo_app\vendor\laravel\framework\src\Illuminate\Container\Container.php:836
+      ReflectionClass::__construct("Database\Seeders\TasksTableSeeder")
+
+C:\xampp\htdocs\todo_app>php artisan make:controller FolderController
+Controller created successfully.
+
+C:\xampp\htdocs\todo_app>php artisan make:request CreateFolder
+Request created successfully.
+
+C:\xampp\htdocs\todo_app>cp ./resources/lang/en/validation.php ./resources/lang/ja/
+'cp' は、内部コマンドまたは外部コマンド、
+操作可能なプログラムまたはバッチ ファイルとして認識されていません。
+
+C:\xampp\htdocs\todo_app>

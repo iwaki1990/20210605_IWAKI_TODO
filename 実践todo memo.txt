@@ -1,0 +1,36 @@
+
+テーブル設計が苦手
+以下のようなテーブルを作成してください。
+
+カラム	型	プライマリーキー	Not Null
+id	BIGINT(20)	○	○
+content	VARCHAR(191)		○
+created_at	TIMESTAMP		
+updated_at	TIMESTAMP	
+
+content:入力必須かつ20文字以内
+
+
+URL	概要	HTTPメソッド	コントローラー	メソッド名
+/	トップページの表示	get	TodoController	index
+/todo/create	タスクの作成	post	TodoController	create
+/todo/update	タスクの更新	post	TodoController	update
+/todo/delete	タスクの削除	post	TodoController	delete
+
+
+
+CREATE TABLE TODO (id INT BIGINT(20) PRIMARY KEY NOT NULL, content VARCHAR(191) NOT NULL,created_at	TIMESTAMP,updated_at	TIMESTAMP );
+
+php artisan make:controller TodoController
+
+web.php
+
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TodoController;
+
+Route::get('/', [PersonController::class, 'index']);
+Route::post('/todo/create', [TodoController::class, 'create']);
+Route::post('/todo/update', [TodoController::class, 'update']);
+Route::post('/todo/delete', [TodoController::class, 'delete']);
